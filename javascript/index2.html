@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1 -->
+    <img id="test" src="https://codingapple1.github.io/kona.jpg">
+
+    <!-- 2. 이것은 jQuery Ajax 편리하니까 jQuery CDN 파일 -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script>
+        // 1 
+        // var 프로미스 = new Promise(function (resolve, reject) {
+        //     document.querySelector(".#test").addEventListener("load", function () {
+        //         resolve();
+        //     })
+        //     document.querySelector(".#test").addEventListener("error", function () {
+        //         reject();
+        //     })
+        // })
+
+
+        // 프로미스.then(function () {
+        //     console.log('성공');
+        // }).catch(function () {
+        //     console.log('실패');
+        // })
+
+        // 3.
+        var 프로미스 = new Promise(function (성공, 실패) {
+            $.get('https://codingapple1.github.io/hello.txt').done(function (결과) {
+                성공(결과)
+            });
+        });
+
+        프로미스.then(function (결과) {
+            console.log(결과);
+
+            var 프로미스2 = new Promise(function (성공, 실패) {
+                $.get('https://codingapple1.github.io/hello2.txt').done(function (결과) {
+                    성공(결과)
+                })
+            });
+
+            return 프로미스2;
+
+        }).then(function (결과) {
+            console.log(결과);
+        })
+
+
+
+
+
+
+        const member = { id: '32156', name: 'Egroo Guu', alilas: 'EG', status: 'active' };
+        const { id, alilas } = member;
+        const { name: user } = member;
+        console.log(id);
+        console.log(alilas);
+        console.log(user);
+
+
+
+    </script>
+</body>
+
+</html>
